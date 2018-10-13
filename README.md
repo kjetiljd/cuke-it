@@ -17,3 +17,11 @@ mvn install
 mvn versions:display-dependency-updates 
 ```
 Uses [versions-rules.xml](versions-rules.xml) to avoid try to avoid pre-release versions.
+
+## Contributing
+
+See [CONTRIBUTING](CONTRIBUTING.md).
+
+## License
+
+See [LICENSE](LICENSE).
