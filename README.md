@@ -1,6 +1,6 @@
 # Cucumber for testing a web-based application (example/demo)
 
-## Prerequirements
+## Pre-requirements
 
 * Java 11
 * mvn 3.5.4
@@ -16,4 +16,4 @@ mvn install
 ```
 mvn versions:display-dependency-updates 
 ```
-Uses [versions-rules.xml](versions-rules.xml) to avoid try to avoid pre-relase versions.
+Uses [versions-rules.xml](versions-rules.xml) to avoid try to avoid pre-release versions.
