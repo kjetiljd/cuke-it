@@ -1,0 +1,86 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'demo'
+version = '0.1-SNAPSHOT'
+
+description = """cuke-it"""
+
+sourceCompatibility = 11
+targetCompatibility = 11
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+configurations {
+    featureTestRuntime
+    featureTestRuntime.extendsFrom testRuntime
+
+    featureTestCompile
+    featureTestCompile.extendsFrom testCompile
+}
+
+configurations.all {
+}
+
+repositories {
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+sourceSets {
+    test {
+        java {
+            exclude 'src/feature-test/**'
+        }
+        resources {
+            exclude 'src/feature-test/**'
+        }
+    }
+
+    featureTest {
+        java {
+            srcDir 'src/feature-test/java/'
+        }
+        resources {
+            srcDir 'src/feature-test/resources'
+        }
+    }
+}
+
+
+dependencies {
+    compile group: 'io.ratpack', name: 'ratpack-core', version:'1.5.4'
+    compile group: 'com.sun.activation', name: 'javax.activation', version:'1.2.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version:'5.3.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version:'5.3.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.3.1'
+    testCompile group: 'org.apache.httpcomponents', name: 'fluent-hc', version:'4.5.6'
+
+	featureTestCompile group: 'info.cukes', name: 'cucumber-java', version:'1.2.5'
+    featureTestCompile group: 'info.cukes', name: 'cucumber-junit', version:'1.2.5'
+    featureTestCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version:'5.3.1'
+
+    featureTestCompile sourceSets.test.output
+    featureTestCompile sourceSets.main.output
+    featureTestCompile configurations.testCompile
+    featureTestRuntime configurations.testRuntime
+}
+
+
+task featureTest(type: Test) {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = 'Runs the feature tests.'
+
+    testClassesDir = sourceSets.featureTest.output.classesDir
+    classpath = sourceSets.featureTest.runtimeClasspath
+
+    reports.html.destination = file("${buildDir}/reports/feature-tests")
+    reports.junitXml.destination = file("${buildDir}/feature-test-results")
+
+    doFirst {
+        // Anything?
+    }
+}
+
+build.dependsOn featureTest
+featureTest.dependsOn assemble
