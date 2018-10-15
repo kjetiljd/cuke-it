@@ -11,7 +11,7 @@ public class App {
         new App().start();
     }
 
-    void start() throws Exception {
+    public void start() throws Exception {
         server = RatpackServer.start(server -> server
                 .serverConfig(ServerConfig.embedded())
                 .registryOf(registry -> registry.add("World!"))
@@ -21,11 +21,11 @@ public class App {
 
     }
 
-    String port() {
+    public String port() {
         return "" + server.getBindPort();
     }
 
-    void stop() throws Exception {
+    public void stop() throws Exception {
         server.stop();
     }
 }
