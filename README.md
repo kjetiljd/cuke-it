@@ -30,9 +30,13 @@ Uses [versions-rules.xml](versions-rules.xml) to avoid try to avoid pre-release 
 
 ### Gradle
 
-Oups ... not implemented yet ... perhaps [contribute?](CONTRIBUTING.md)
-
-This might be helpful: https://github.com/ben-manes/gradle-versions-plugin
+```
+./gradlew dependencyUpdates
+```
+If you want everything updated - try:
+```
+./gradlew useLatestVersions && ./gradlew useLatestVersionsCheck
+```
 
 ## Contributing
 

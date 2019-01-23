@@ -1,3 +1,8 @@
+plugins {
+    id 'se.patrikerdes.use-latest-versions' version '0.2.7'
+    id 'com.github.ben-manes.versions' version '0.20.0'
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 
@@ -84,3 +89,20 @@ task featureTest(type: Test) {
 
 build.dependsOn featureTest
 featureTest.dependsOn assemble
+
+/* https://github.com/ben-manes/gradle-versions-plugin */
+dependencyUpdates {
+    resolutionStrategy {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Not a real release')
+                }
+            }
+        }
+    }
+    revision = 'release'
+}
