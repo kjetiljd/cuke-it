@@ -23,7 +23,7 @@ mvn install
 
 ### Maven
 ```
-mvn versions:display-dependency-updates 
+mvn versions:display-dependency-updates versions:display-plugin-updates
 ```
 Uses [versions-rules.xml](versions-rules.xml) to avoid try to avoid pre-release versions.
 
