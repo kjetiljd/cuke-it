@@ -5,8 +5,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        format={"pretty", "html:target/cucumber"},
-        tags = {"~@Ignore", "~@WIP"},
+        plugin ={"pretty", "html:target/cucumber"},
+        tags = {"not @Ignore", "not @WIP"},
         snippets=SnippetType.UNDERSCORE,
         strict=true)
 public class RunFeatureTest {}
