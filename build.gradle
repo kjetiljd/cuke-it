@@ -76,7 +76,7 @@ task featureTest(type: Test) {
     group = LifecycleBasePlugin.VERIFICATION_GROUP
     description = 'Runs the feature tests.'
 
-    testClassesDir = sourceSets.featureTest.output.classesDir
+    testClassesDirs = sourceSets.featureTest.output.classesDirs
     classpath = sourceSets.featureTest.runtimeClasspath
 
     reports.html.destination = file("${buildDir}/reports/feature-tests")
