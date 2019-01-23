@@ -61,8 +61,8 @@ dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.3.2'
     testCompile group: 'org.apache.httpcomponents', name: 'fluent-hc', version:'4.5.6'
 
-    featureTestCompile group: 'io.cucumber', name: 'cucumber-java', version:'4.2.0'
-    featureTestCompile group: 'io.cucumber', name: 'cucumber-junit', version:'4.2.0'
+    featureTestCompile group: 'io.cucumber', name: 'cucumber-java', version:'4.2.2'
+    featureTestCompile group: 'io.cucumber', name: 'cucumber-junit', version:'4.2.2'
     featureTestCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version:'5.3.2'
 
     featureTestCompile sourceSets.test.output
