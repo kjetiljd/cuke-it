@@ -1,6 +1,6 @@
 plugins {
-    id 'se.patrikerdes.use-latest-versions' version '0.2.7'
-    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'se.patrikerdes.use-latest-versions' version '0.2.13'
+    id 'com.github.ben-manes.versions' version '0.27.0'
 }
 
 apply plugin: 'java'
@@ -54,16 +54,16 @@ sourceSets {
 
 
 dependencies {
-    compile group: 'io.ratpack', name: 'ratpack-core', version:'1.6.0'
+    compile group: 'io.ratpack', name: 'ratpack-core', version:'1.7.5'
     compile group: 'com.sun.activation', name: 'javax.activation', version:'1.2.0'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version:'5.3.2'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version:'5.3.2'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.3.2'
-    testCompile group: 'org.apache.httpcomponents', name: 'fluent-hc', version:'4.5.6'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version:'5.5.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version:'5.5.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.5.2'
+    testCompile group: 'org.apache.httpcomponents', name: 'fluent-hc', version:'4.5.10'
 
-    featureTestCompile group: 'io.cucumber', name: 'cucumber-java', version:'4.2.2'
-    featureTestCompile group: 'io.cucumber', name: 'cucumber-junit', version:'4.2.2'
-    featureTestCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version:'5.3.2'
+    featureTestCompile group: 'io.cucumber', name: 'cucumber-java', version:'4.8.1'
+    featureTestCompile group: 'io.cucumber', name: 'cucumber-junit', version:'4.8.1'
+    featureTestCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version:'5.5.2'
 
     featureTestCompile sourceSets.test.output
     featureTestCompile sourceSets.main.output
@@ -94,7 +94,7 @@ featureTest.dependsOn assemble
 dependencyUpdates {
     resolutionStrategy {
         componentSelection { rules ->
-            rules.all { ComponentSelection selection ->
+            rules.all { selection ->
                 boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview'].any { qualifier ->
                     selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
                 }
