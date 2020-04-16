@@ -1,8 +1,8 @@
 package stepdefs;
 
-import cucumber.api.java.no.Når;
-import cucumber.api.java.no.Så;
 import demo.App;
+import io.cucumber.java.no.Når;
+import io.cucumber.java.no.Så;
 import org.apache.http.client.fluent.Request;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
